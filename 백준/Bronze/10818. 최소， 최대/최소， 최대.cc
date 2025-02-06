@@ -1,36 +1,30 @@
 #include <iostream>
+#include <vector>
 #include <algorithm>
 
 using namespace std;
 
-
-
 int main()
 {
-	int iCount = 0;
-	int iMin = 1000000;
-	int iMax = -1000000;
-	int iinput = 0;
+    int n;
+    int max = -1000000;
+    int min = 1000000;
+    int input;
 
-	cin >> iCount;
+    cin >> n;
 
-	for (int i = 0; i < iCount; ++i)
-	{
-		cin >> iinput;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> input;
 
-		if (iinput < iMin)
-		{
-			iMin = iinput;
-		}
+        if (input > max)
+            max = input;
 
-		if (iinput > iMax)
-		{
-			iMax = iinput;
-		}
-	}
+        if (input < min)
+            min = input;
+    }
 
-	cout << iMin << " " << iMax;
+    cout << min << ' ' << max;
 
-
-	return 0;
+    return 0;
 }
