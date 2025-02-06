@@ -1,29 +1,26 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-
-
 int main()
 {
-	int iCount = 0;
-	int iMin = 0;
-	int iArr[100000] = {};
+    int n, x;
+    int a[10000] = {};
 
-	cin >> iCount >> iMin;
+    cin >> n >> x;
 
-	for (int i = 0; i < iCount; i++)
-	{
-		cin >> iArr[i];
-	}
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> a[i];
+    }
 
-	for (int i = 0; i < iCount; i++)
-	{
-		if (iMin > iArr[i])
-		{
-			cout << iArr[i] << " ";
-		}
-	}
-	
-	return 0;
+    for (int i = 0; i < n; ++i)
+    {
+        if (a[i] < x)
+            cout << a[i] << ' ';
+    }
+
+    return 0;
 }
