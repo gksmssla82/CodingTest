@@ -8,16 +8,23 @@ using namespace std;
 
 int main()
 {
-	string a,b,c;
+	int a[8];
+	int asc = 0, des = 0;
 
-	getline(cin, a);
+	for (int i = 0; i < 8; ++i)
+		cin >> a[i];
 
-	b = "1 2 3 4 5 6 7 8";
-	c = "8 7 6 5 4 3 2 1";
+	for (int i = 0; i < 7; ++i)
+	{
+		if (a[i] < a[i + 1])
+			++asc;
+		else if (a[i] > a[i + 1])
+			++des;
+	}
 
-	if (a == b)
+	if (asc == 7)
 		cout << "ascending";
-	else if (a == c)
+	else if (des == 7)
 		cout << "descending";
 	else
 		cout << "mixed";
