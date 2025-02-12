@@ -1,34 +1,32 @@
+#include <string>
 #include <iostream>
-
+#include <algorithm>
+#include <vector>
 using namespace std;
-
 
 
 int main()
 {
-	int iCount = 0;
-	int iArr[100] = {};
-	int iSelect = 0;
-	int iOut = 0;
+	int n, find, count = 0;
 
-	cin >> iCount;
-	
-	for (int i = 0; i < iCount; i++)
+	cin >> n;
+
+	int* arr = new int[n];
+
+	for (int i = 0; i < n; ++i)
 	{
-		cin >> iArr[i];
+		cin >> arr[i];
 	}
 
-	cin >> iSelect;
+	cin >> find;
 
-	for (int i = 0; i < iCount; i++)
+	for (int i = 0; i < n; ++i)
 	{
-		if (iArr[i] == iSelect)
-		{
-			++iOut;
-		}
+		if (arr[i] == find)
+			++count;
 	}
 
-	cout << iOut << endl;
+	cout << count;
 
 	return 0;
 }
