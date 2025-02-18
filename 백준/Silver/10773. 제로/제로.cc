@@ -28,15 +28,14 @@ int main()
 			s.emplace(input);	
 	}
 
-	int s_size = s.size();
 	int sum = 0;
 
-	for (int i = 0; i < s_size; ++i)
+	while (!s.empty())
 	{
 		sum += s.top();
 		s.pop();
 	}
-
+		
 	cout << sum;
 
 	return 0;
