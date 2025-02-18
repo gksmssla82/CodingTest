@@ -1,65 +1,60 @@
-#include <string>
 #include <iostream>
 #include <algorithm>
-#include <vector>
 #include <list>
+#include <vector>
+#include <string>
+
 using namespace std;
 
-
-// BPACD BAPC
-int main(void)
+int main()
 {
 	int t;
-	
+
 	cin >> t;
 
+	string L;
+
 	list<char> pw;
-	string s;
+	auto cursor = pw.begin();
 
 	for (int i = 0; i < t; ++i)
 	{
-		
-		cin >> s;
+		cin >> L;
 
 		pw.clear();
+		cursor = pw.begin();
 
-		auto iter = pw.begin();
-
-		for (auto ldx : s)
+		for (auto& i : L)
 		{
-			// 첫번쨰 주소가 아니면 
-			if (ldx == '<')
+			if (i == '<')
 			{
-				if (iter != pw.begin())
-					--iter;
-			}
-			// 마지막 주소가 아니면
-			else if (ldx == '>')
-			{
-				if (iter != pw.end())
-					++iter;
+				if (cursor != pw.begin())
+					--cursor;
 			}
 
-			else if (ldx == '-')
+			else if (i == '>')
 			{
-				if (iter != pw.begin())
-				iter = pw.erase(--iter);
+				if (cursor != pw.end())
+					++cursor;
+			}
+
+			else if (i == '-')
+			{
+				if (cursor != pw.begin())
+					cursor = pw.erase(--cursor);
 			}
 
 			else
 			{
-				iter = pw.insert(iter, ldx);
-				iter++;
+				cursor = pw.insert(cursor, i);
+				++cursor;
 			}
 		}
 
-		for (auto o : pw)
+		for (auto& o : pw)
 			cout << o;
 		cout << '\n';
 	}
 
-
 	return 0;
-
-
 }
