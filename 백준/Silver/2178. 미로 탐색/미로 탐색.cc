@@ -15,7 +15,6 @@ int check[102][102];
 int main()
 {
 	int n, m;
-	int movecount = 0;
 	int nx[4] = { 1,0,-1,0 };
 	int ny[4] = { 0,1,0,-1 };
 
@@ -23,9 +22,6 @@ int main()
 
 	for (int i = 0; i < n; ++i)
 		cin >> board[i];
-
-	for (int i = 0; i < n; ++i)
-		fill(check[i], check[i] + m, 0);
 
 	check[0][0] = 1;
 	queue<pair<int, int>> q;
