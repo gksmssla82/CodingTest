@@ -9,72 +9,58 @@
 
 using namespace std;
 
-#define X first
-#define Y second
-
-int board[502][502]; // 보드
-bool vis[502][502];  // 방문기록
-
-int n, m; // 열,행
-
-int dx[4] = { 1,0,-1,0 }; 
-int dy[4] = { 0,1,0,-1 };
+int board[502][502];
+bool check[502][502];
 
 int main()
 {
-
+	int n, m;
+	int count = 0, width = 0;
+	int nx[4] = { 1,0,-1,0 };
+	int my[4] = { 0,1,0,-1 };
 	cin >> n >> m;
 
-	// 보드판 색칠 입력
 	for (int i = 0; i < n; ++i)
 		for (int j = 0; j < m; ++j)
 			cin >> board[i][j];
 
-	int mx = 0; // 그림의 최댓값
-	int num = 0; // 그림의 수
-
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; ++i)
 	{
-		for (int j = 0; j < m; j++)
+		for (int j = 0; j < m; ++j)
 		{
-			// 보드가 0이고 이미 방문했으면 건너뛰기
-			if (board[i][j] == 0 || vis[i][j])
+			if (check[i][j] || board[i][j] != 1)
 				continue;
 
-			num++;
+			check[i][j] = true;
 			queue<pair<int, int>> q;
-
-			vis[i][j] = true;
 			q.emplace(i, j);
-			int area = 0; 
-
+			++count;
+			int area = 0;
 			while (!q.empty())
 			{
-				area++;
 				pair<int, int> cur = q.front(); q.pop();
+				++area;
 
-				for (int dir = 0; dir < 4; ++dir)
+				for (int i = 0; i < 4; ++i)
 				{
-					int nx = cur.X + dx[dir];
-					int ny = cur.Y + dy[dir];
+					int x = cur.first + nx[i];
+					int y = cur.second + my[i];
 
-					// 열과 행 범위 벗어났으면 건너뛰기
-					if (nx < 0 || nx >= n || ny < 0 || ny >= m)
+					if (x < 0 || x >= n || y < 0 || y >= m)
 						continue;
-					// 이미 방문했거나 색칠이 안되어있으면
-					if (vis[nx][ny] || board[nx][ny] != 1)
+					if (check[x][y] || board[x][y] != 1)
 						continue;
 
-					// 방문
-					vis[nx][ny] = 1;
-					q.emplace(nx, ny);
+					check[x][y] = true;
+					q.emplace(x, y);
 				}
+
 			}
 
-			mx = max(mx, area);
+			width = max(width, area);
 		}
 	}
-	
-	cout << num << '\n' << mx;
+
+	cout << count << '\n' << width;
 	return 0;
 }
