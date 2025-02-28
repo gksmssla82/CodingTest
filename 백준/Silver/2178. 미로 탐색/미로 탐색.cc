@@ -15,8 +15,9 @@ int check[102][102];
 int main()
 {
 	int n, m;
+	queue<pair<int, int>> q;
 	int nx[4] = { 1,0,-1,0 };
-	int ny[4] = { 0,1,0,-1 };
+	int my[4] = { 0,1,0,-1 };
 
 	cin >> n >> m;
 
@@ -24,17 +25,16 @@ int main()
 		cin >> board[i];
 
 	check[0][0] = 1;
-	queue<pair<int, int>> q;
 	q.emplace(0, 0);
 
 	while (!q.empty())
 	{
-		pair<int,int> cur = q.front(); q.pop();
+		auto cur = q.front(); q.pop();
 
 		for (int i = 0; i < 4; ++i)
 		{
 			int x = cur.first + nx[i];
-			int y = cur.second + ny[i];
+			int y = cur.second + my[i];
 
 			if (x < 0 || x >= n || y < 0 || y >= m)
 				continue;
@@ -46,9 +46,6 @@ int main()
 		}
 	}
 
-	
-
-	cout << check[n-1][m-1];
-
+	cout << check[n - 1][m - 1];
 	return 0;
 }
