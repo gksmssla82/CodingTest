@@ -15,9 +15,11 @@ bool check[502][502];
 int main()
 {
 	int n, m;
-	int count = 0, width = 0;
+	int num = 0, width = 0;
+	queue<pair<int, int>> q;
 	int nx[4] = { 1,0,-1,0 };
 	int my[4] = { 0,1,0,-1 };
+
 	cin >> n >> m;
 
 	for (int i = 0; i < n; ++i)
@@ -32,13 +34,13 @@ int main()
 				continue;
 
 			check[i][j] = true;
-			queue<pair<int, int>> q;
 			q.emplace(i, j);
-			++count;
+			++num;
 			int area = 0;
+
 			while (!q.empty())
 			{
-				pair<int, int> cur = q.front(); q.pop();
+				auto cur = q.front(); q.pop();
 				++area;
 
 				for (int i = 0; i < 4; ++i)
@@ -54,13 +56,12 @@ int main()
 					check[x][y] = true;
 					q.emplace(x, y);
 				}
-
 			}
 
 			width = max(width, area);
 		}
 	}
 
-	cout << count << '\n' << width;
+	cout << num << '\n' << width;
 	return 0;
 }
