@@ -16,16 +16,17 @@ int main()
 
 	cin >> n;
 
+	// n * log n
 	for (int i = 0; i < n; ++i)
 	{
 		int a;
 		cin >> a;
-		
+
 		mp[a] = true;
 	}
 
+	// m * log n
 	cin >> m;
-
 	for (int i = 0; i < m; ++i)
 	{
 		int a;
@@ -40,8 +41,8 @@ int main()
 			cout << "0 ";
 		}
 	}
-	
-	
+
+	// answer = n * log n + m * log n1 
 
 	return 0;
 }
