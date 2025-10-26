@@ -1,30 +1,34 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <string>
 
 using namespace std;
 
+#include <vector>
+#include <algorithm>
+#include <map>
+#include <string>
+
+string s1, s2;
+
 int main()
 {
-    string a,b;
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 
-    cin >> a;
-    cin >> b;
 
-    reverse(a.begin(), a.end());
-    reverse(b.begin(), b.end());
+	cin >> s1 >> s2;
 
-    int ia, ib;
+	reverse(&s1[0], &s1[s1.size()]);
+	reverse(&s2[0], &s2[s2.size()]);
 
-    ia = atoi(a.c_str());
-    ib = atoi(b.c_str());
+	if (s1 < s2)
+	{
+		cout << s2;
+	}
+	else
+	{
+		cout << s1;
+	}
 
-    int result;
-    
-    result = (ia > ib) ? ia : ib;
-
-    cout << result;
-
-    return 0;
+	return 0;
 }
