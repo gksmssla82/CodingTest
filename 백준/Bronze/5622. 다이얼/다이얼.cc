@@ -1,46 +1,32 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <string>
 
 using namespace std;
 
+#include <vector>
+#include <algorithm>
+#include <map>
+#include <string>
+
+int a[26] = { 3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,8,9,9,9,10,10,10,10 };
+int sum;
+
+string s;
+
 int main()
 {
-    string dial;
-    int time = 0;
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 
-    cin >> dial;
 
-    for (int i = 0; i < dial.length(); ++i)
-    {
-        // 2
-        if (65 <= dial[i] && dial[i] <= 67)
-            time += 3;
-        // 3
-        else if (68 <= dial[i] && dial[i] <= 70)
-            time += 4;
-        // 4
-        else if (71 <= dial[i] && dial[i] <= 73)
-            time += 5;
-        // 5
-        else if (74 <= dial[i] && dial[i] <= 76)
-            time += 6;
-        // 6
-        else if (77 <= dial[i] && dial[i] <= 79)
-            time += 7;
-        // 7
-        else if (80 <= dial[i] && dial[i] <= 83)
-            time += 8;
-        // 8
-        else if (84 <= dial[i] && dial[i] <= 86)
-            time += 9;
-        // 9
-        else
-            time += 10;
-    }
+	cin >> s;
 
-    cout << time;
+	for (int i = 0; i < s.size(); ++i)
+	{
+		sum += a[s[i] - 'A'];
+	}
 
-    return 0;
+	cout << sum;
+
+	return 0;
 }
