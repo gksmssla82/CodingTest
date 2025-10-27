@@ -1,68 +1,79 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
-#define MAX 27
 
-string board[MAX];
-bool check[MAX][MAX];
-queue<pair<int, int>> q;
-vector<int> out;
-int nx[4] = { 1,0,-1,0 };
-int my[4] = { 0,1,0,-1 };
-int num = 0;
 int n;
+int map[30][30];
+bool vis[30][30];
+
+vector<int> v;
+
+int dy[4] = { -1,0,1,0 };
+int dx[4] = { 0,1,0,-1 };
+
+int cnt = 0;
+
+int dfs(int y, int x)
+{
+	vis[y][x] = true;
+
+	int token = 1;
+
+	for (int i = 0; i < 4; ++i)
+	{
+		int ny = y + dy[i];
+		int nx = x + dx[i];
+
+		if (0 > ny || 0 > nx || ny >= n || nx >= n) continue;
+		if (vis[ny][nx] || map[ny][nx] == 0) continue;
+
+		token += dfs(ny, nx);
+	}
+
+	return token;
+}
 
 int main()
 {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+
 	cin >> n;
 
 	for (int i = 0; i < n; ++i)
-			cin >> board[i];
+	{
+		string s;
+		cin >> s;
+
+		for (int j = 0; j < n; ++j)
+		{
+			map[i][j] = s[j] - '0';
+		}
+	}
 
 	for (int i = 0; i < n; ++i)
 	{
 		for (int j = 0; j < n; ++j)
 		{
-			if (check[i][j] || board[i][j] != '1')
-				continue;
-
-			check[i][j] = true;
-			q.emplace(i, j);
-			++num;
-			int area = 0;
-
-			while (!q.empty())
+			if (!vis[i][j] && map[i][j] == 1)
 			{
-				auto cur = q.front(); q.pop();
-				++area;
-
-				for (int i = 0; i < 4; ++i)
-				{
-					int x = cur.first + nx[i];
-					int y = cur.second + my[i];
-
-					if (x < 0 || x >= n || y < 0 || y >= n)
-						continue;
-					if (check[x][y] || board[x][y] != '1')
-						continue;
-
-					check[x][y] = true;
-					q.emplace(x, y);
-				}
+				++cnt;
+				v.push_back(dfs(i, j));
 			}
-
-			out.emplace_back(area);
 		}
 	}
-
-	cout << num << '\n';
-
-	sort(out.begin(), out.end());
-
-	for (auto& o : out)
-		cout << o << '\n';
 	
+	cout << cnt << '\n';
+	
+	sort(v.begin(), v.end());
+
+	for (auto& i : v)
+	{
+		cout << i << '\n';
+	}
 
 	return 0;
 }
