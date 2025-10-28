@@ -1,18 +1,42 @@
 #include <iostream>
 #include <vector>
-
+#include <algorithm>
+#include <queue>
 using namespace std;
+
 
 int n, m;
 vector<int> v[1005];
 bool vis[1005];
 int cnt = 0;
+queue<int> q;
+
+void bfs(int here)
+{
+	vis[here] = true;
+	q.push(here);
+
+	while (q.size())
+	{
+		int front = q.front();
+		q.pop();
+
+		for (const int& i : v[front])
+		{
+			if (!vis[i])
+			{
+				q.push(i);
+				vis[i] = true;
+			}
+		}
+	}
+}
 
 void dfs(int here)
 {
 	vis[here] = true;
 
-	for (auto& i : v[here])
+	for (const int& i : v[here])
 	{
 		if (!vis[i])
 		{
@@ -20,8 +44,6 @@ void dfs(int here)
 		}
 	}
 }
-
-
 
 int main()
 {
@@ -40,18 +62,17 @@ int main()
 		v[b].push_back(a);
 	}
 
+
 	for (int i = 1; i <= n; ++i)
 	{
 		if (!vis[i])
 		{
 			++cnt;
-			dfs(i);
+			bfs(i);
 		}
 	}
-
-	cout << cnt;
-
 	
+	cout << cnt;
 
 	return 0;
 }
