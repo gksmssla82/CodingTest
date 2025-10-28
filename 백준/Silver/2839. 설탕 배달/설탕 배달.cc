@@ -15,11 +15,11 @@ int main()
 
 	cin >> n;
 
-	for (int i = n / 5; i >= 0; --i) // 5로나눈 최대값
+	for (int i = n / 5; i >= 0; --i)
 	{
-		int rest = n - (5 * i); // 5로 나눈 나머지 
+		int rest = n - (i * 5);
 
-		if (rest % 3 == 0) // 3으로 나누어질떄
+		if (rest % 3 == 0)
 		{
 			ret = i + (rest / 3);
 			break;
