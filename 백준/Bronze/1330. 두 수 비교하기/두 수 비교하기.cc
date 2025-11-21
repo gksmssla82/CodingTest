@@ -1,22 +1,16 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 int main()
 {
-	int A, B;
+	int a, b;
 
-	cin >> A;
-	cin >> B;
+	cin >> a >> b;
 
-	if (A > B)
-		cout << '>' << endl;
+	if (a > b) cout << '>';
+	else if (a < b) cout << '<';
+	else cout << "==";
 
-	else if (A < B)
-		cout << '<' << endl;
-
-	else
-		cout << "==" << endl;
-	
 	return 0;
 }
