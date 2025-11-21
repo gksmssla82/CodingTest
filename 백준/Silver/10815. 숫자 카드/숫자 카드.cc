@@ -1,48 +1,40 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-#include <vector>
-#include <algorithm>
-#include <map>
-
-int n, m;
-map<int, bool> mp;
-
 int main()
 {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
 
-	cin >> n;
+    map<int, int> map;
 
-	// n * log n
-	for (int i = 0; i < n; ++i)
-	{
-		int a;
-		cin >> a;
+    int n, m;
 
-		mp[a] = true;
-	}
+    cin >> n;
 
-	// m * log n
-	cin >> m;
-	for (int i = 0; i < m; ++i)
-	{
-		int a;
-		cin >> a;
+    for (int i = 0; i < n; ++i)
+    {
+        int A;
+        cin >> A;
 
-		if (mp[a])
-		{
-			cout << "1 ";
-		}
-		else
-		{
-			cout << "0 ";
-		}
-	}
+        map[A]++;
+    }
 
-	// answer = n * log n + m * log n1 
+    cin >> m;
 
-	return 0;
+    for (int i = 0; i < m; ++i)
+    {
+        int A;
+        cin >> A;
+
+        if (map[A])
+            cout << "1 ";
+        else
+            cout << "0 ";
+
+    }
+
+    return 0;
 }
