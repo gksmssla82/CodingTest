@@ -1,35 +1,36 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 int main()
 {
-	int testcase;
-	int score;
-	int Ocnt;
-	string word;
+	int t;
+	string s;
 
-	cin >> testcase;
+	cin >> t;
 
-	for (int i = 0; i < testcase; ++i)
+	while (t--)
 	{
-		cin >> word;
+		int ans = 0;
+		int sum = 0;
+		cin >> s;
 		
-		score = 0;
-		Ocnt = 0;
-
-		for (int j = 0; j < word.length(); ++j)
+		for (auto& i : s)
 		{
-			if (word[j] == 'O')
-				++Ocnt;
+			if (i == 'O')
+			{
+				ans++;
+			}
 			else
-				Ocnt = 0;
+			{
+				ans = 0;
+			}
 
-			score += Ocnt;
+			sum += ans;
 		}
 
-		cout << score << "\n";
+		cout << sum << '\n';
 	}
-	
 
 	return 0;
 }
