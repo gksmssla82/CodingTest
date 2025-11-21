@@ -1,42 +1,38 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-#include <vector>
-#include <algorithm>
-#include <map>
-
-int n, m;
-map<int, int> mp;
-
-// n log n + m log n
-
 int main()
 {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
 
-	cin >> n;
+    int n, m;
+    unordered_map<int, int> mp;
 
-	for (int i = 0; i < n; ++i)
-	{
-		int a;
-		cin >> a;
+    cin >> n;
 
-		mp[a]++;
-	}
+    for (int i = 0; i < n; ++i)
+    {
+        int A;
+        cin >> A;
 
-	cin >> m;
+        mp[A]++;
+    }
 
-	for (int i = 0; i < m; ++i)
-	{
-		int a; 
-		cin >> a;
+    cin >> m;
 
-		cout << mp[a] << ' ';
-	}
-	
-	
+    for (int i = 0; i < m; ++i)
+    {
+        int A;
+        cin >> A;
 
-	return 0;
+        if (mp[A])
+            cout << mp[A] << ' ';
+        else
+            cout << "0 ";
+    }
+
+    return 0;
 }
