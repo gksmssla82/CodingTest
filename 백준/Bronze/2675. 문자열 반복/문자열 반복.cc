@@ -1,29 +1,30 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 int main()
 {
-	int testcase;
-	int count;
-	string word;
+	int t, r;
+	string s;
 
-	cin >> testcase;
+	cin >> t;
 
-	for (int i = 0; i < testcase; ++i)
+	while (t--)
 	{
-		cin >> count;
-		cin >> word;
+		cin >> r;
+		cin >> s;
 
-		for (int j = 0; j < word.length(); ++j)
+		for (auto& i : s)
 		{
-
-			for (int k = 0; k < count; ++k)
+			for (int j = 0; j < r; ++j)
 			{
-				cout << word[j];
+				cout << i;
 			}
 		}
+
 		cout << '\n';
 	}
+
 
 	return 0;
 }
